@@ -35,7 +35,7 @@ class DataTransformation:
             num_pipeline = Pipeline(
                 steps=[
                     ("imputer",SimpleImputer(strategy="median")),
-                    ("scaler",StandardScaler())
+                    ("scaler",StandardScaler(with_mean=False))
                 ]
             )
 
@@ -43,7 +43,7 @@ class DataTransformation:
                 steps=[
                     ("imputer",SimpleImputer(strategy="most_frequent")),
                     ("one_hot_encoder",OneHotEncoder()),
-                    ("scaler",StandardScaler())
+                    ("scaler",StandardScaler(with_mean=False))
                 ]
             )
 
@@ -101,7 +101,7 @@ class DataTransformation:
             return(
                 train_arr,
                 test_arr,
-                self.data_transformation_config.preprocessor_ob_file_path
+                self.data_transformation_config.preprocessor_ob_file_path,
             )
 
 
